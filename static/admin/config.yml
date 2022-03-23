@@ -1,0 +1,36 @@
+# backend:
+#   name: gitlab
+#   repo: front-end/POCs/gatsby
+#   branch: master # Branch to update (optional; defaults to master)
+#   app_id: 2927 # Application ID from your GitLab settings
+#   auth_type: pkce
+#   api_root: https://gitlab.essent.nl/api/v4/ # The API endpoint. Only necessary in certain cases, like with GitHub Enterprise or self-hosted GitLab.
+#   base_url: https://gitlab.essent.nl/ # OAuth client hostname (just the base domain, no path). Required when using an external OAuth server or self-hosted GitLab.
+#   auth_endpoint: oauth/authorize # Path to append to base_url for authentication requests. Optional.
+
+backend:
+  name: github
+  repo: jboeijenga/starter-blog
+  preview_context: my-provider/deployment
+
+media_folder: static/img
+public_folder: /img
+publish_mode: editorial_workflow
+local_backend: true
+
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/blog'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{title}}/index'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
